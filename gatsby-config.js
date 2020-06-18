@@ -86,7 +86,9 @@ module.exports = {
         // Provide an object of Prismic custom type JSON schemas to load into
         // Gatsby. This is required.
         schemas: {
-          // Your custom types mapped to schemas
+          issue: require("./src/schemas/issue.json"),
+          subissue: require("./src/schemas/subissue.json"),
+          talking_point: require("./src/schemas/talking_point.json"),
         },
 
         // Set a default language when fetching documents. The default value is
