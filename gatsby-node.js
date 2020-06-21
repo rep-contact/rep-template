@@ -33,6 +33,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 // });
 
 exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
   const result = await graphql(`
     {
       allPrismicTalkingPoint {
@@ -43,5 +44,15 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  console.log(JSON.stringify(result, null, 4));
+
+  result.data.allPrismicTalkingPoint.nodes.forEach((node) => {
+    console.log(node);
+    createPage({
+      path: `talking-point/${node.uid}`,
+      component: path.resolve(`./src/templates/post.js`),
+      context: {
+        id: node.id,
+      },
+    });
+  });
 };
