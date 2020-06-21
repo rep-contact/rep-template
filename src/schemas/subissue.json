@@ -29,6 +29,13 @@
         },
         "label": "Talking Point Group"
       }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Url ID",
+        "placeholder": "slug"
+      }
     }
   }
 }

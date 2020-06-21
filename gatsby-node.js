@@ -1,7 +1,32 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require("path");
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allPrismicIssue {
+        nodes {
+          id
+          uid
+          data {
+            title {
+              html
+            }
+          }
+        }
+      }
+    }
+  `);
+  console.log(result);
+  result.data.allPrismicIssue.nodes.forEach((node) => {
+    console.log(node);
+    createPage({
+      path: `talking-point/${node.uid}`,
+      component: path.resolve(`./src/templates/post.js`),
+      context: {
+        id: node.id,
+        title: node.data.title.html,
+      },
+    });
+  });
+};
