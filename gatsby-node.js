@@ -9,13 +9,19 @@ exports.createPages = async ({ graphql, actions }) => {
           id
           uid
           data {
-            
             title {
               html
+            }
+            subissues {
+              subissue {
+                uid
+                raw
+              }
             }
           }
         }
       }
+
       allPrismicSubissue {
         nodes {
           id
@@ -30,22 +36,18 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
   result.data.allPrismicIssue.nodes.forEach((node) => {
-    console.log(node);
     createPage({
       path: `issue/${node.uid}`,
       component: path.resolve(`./src/templates/issue.js`),
       context: {
         id: node.id,
         title: node.data.title.html,
-        subissues: {
-          data.subissues
-        }
+        subIssues: node.data.subissues,
       },
     });
   });
 
   result.data.allPrismicSubissue.nodes.forEach((node) => {
-    console.log(node);
     createPage({
       path: `sub-issue/${node.uid}`,
       component: path.resolve(`./src/templates/subissue.js`),
