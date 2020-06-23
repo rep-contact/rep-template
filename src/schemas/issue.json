@@ -7,20 +7,20 @@
         "label": "Title"
       }
     },
-    "issuetalkingpoints": {
+    "subissues": {
       "type": "Group",
       "config": {
         "fields": {
-          "issuetalkingpoint": {
+          "subissue": {
             "type": "Link",
             "config": {
               "select": "document",
-              "customtypes": ["talking_point"],
-              "label": "IssueTalkingPoint"
+              "customtypes": ["subissue"],
+              "label": "Subissue"
             }
           }
         },
-        "label": "SubIssue"
+        "label": "Subissues"
       }
     },
     "uid": {
