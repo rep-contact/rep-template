@@ -1,22 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../components/layout";
-// import Image from "../components/image";
-// import SEO from "../components/seo";
 
 const IndexPage = () => {
-  // Build Time Data Fetching
-  //   const gatsbyRepoData = useStaticQuery(graphql`
-  //     query {
-  //       github {
-  //         repository(name: "gatsby", owner: "gatsbyjs") {
-  //           id
-  //           nameWithOwner
-  //           url
-  //         }
-  //       }
-  //     }
-  //   `);
-  // Client-side Runtime Data Fetching
   const [reps, setReps] = useState({});
   const formData = {
     address: "",
@@ -35,7 +20,6 @@ const IndexPage = () => {
         console.log(resultData);
         setReps(resultData);
       });
-    // set data for the number of stars
   };
 
   const handleChange = (event) => {
@@ -56,7 +40,6 @@ const IndexPage = () => {
           reps.officials.map((rep) => {
             return <p>{rep.name}</p>;
           })}
-        {/* <p>Runtime Data: Star count for the Gatsby repo {starsCount}</p> */}
       </section>
     </Layout>
   );
