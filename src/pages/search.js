@@ -30,10 +30,10 @@ const IndexPage = () => {
     const endpoint = `https://www.googleapis.com/civicinfo/v2/representatives?key=${key}&address=${address}`;
 
     fetch(endpoint)
-      //   .then((response) => response.json()) // parse JSON from request
-      .then((response) => {
-        console.log(response.json());
-        // setReps(resultData);
+      .then((response) => response.json()) // parse JSON from request
+      .then((resultData) => {
+        console.log(resultData);
+        setReps(resultData);
       });
     // set data for the number of stars
   };
@@ -52,7 +52,10 @@ const IndexPage = () => {
           </label>
           <button onClick={handleSubmit}>Submit</button>
         </form>
-
+        {reps.officials &&
+          reps.officials.map((rep) => {
+            return <p>{rep.name}</p>;
+          })}
         {/* <p>Runtime Data: Star count for the Gatsby repo {starsCount}</p> */}
       </section>
     </Layout>
