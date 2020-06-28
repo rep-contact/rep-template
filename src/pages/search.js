@@ -14,7 +14,7 @@ const IndexPage = () => {
     const address = formData.address;
     const endpoint = `https://www.googleapis.com/civicinfo/v2/representatives?key=${key}&address=${address}`;
 
-    fetch("http://localhost:50680/.netlify/functions/civicsCall", {
+    fetch("/.netlify/functions/civicsCall", {
       method: "POST",
       body: address,
       headers: {
