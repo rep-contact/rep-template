@@ -14,10 +14,18 @@ const IndexPage = () => {
     const address = formData.address;
     const endpoint = `https://www.googleapis.com/civicinfo/v2/representatives?key=${key}&address=${address}`;
 
-    fetch(endpoint)
-      .then((response) => response.json()) // parse JSON from request
+    fetch("http://localhost:50680/.netlify/functions/civicsCall", {
+      method: "POST",
+      body: address,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => console.log(response.json())) // parse JSON from request
       .then((resultData) => {
         console.log(resultData);
+        return;
         setReps(resultData);
       });
   };

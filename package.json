@@ -16,6 +16,7 @@
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-source-prismic": "3.0.2",
     "gatsby-transformer-sharp": "^2.5.3",
+    "netlify-lambda": "^1.6.3",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -29,6 +30,14 @@
     "gatsby"
   ],
   "license": "MIT",
+  "proxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:50680",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
