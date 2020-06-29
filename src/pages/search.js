@@ -21,8 +21,6 @@ const IndexPage = () => {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        console.log(resultData);
-        return;
         setReps(resultData);
       });
   };
