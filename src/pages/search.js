@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
 
@@ -8,7 +8,6 @@ const IndexPage = () => {
   };
 
   const handleSubmit = (event, setReps) => {
-    console.log(event);
     event.preventDefault();
     const address = formData.address;
 
