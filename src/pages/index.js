@@ -72,36 +72,32 @@ const SearchPage = () => {
   };
 
   return (
-    <Consumer>
-      {(context) => (
-        <Layout>
-          {/* Hero unit */}
-          <Container
-            maxWidth="sm"
-            component="main"
-            className={classes.heroContent}
-          >
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              An Easy Way to Reach Out
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              component="p"
-            >
-              Quickly reach out to your representatives and demand change within
-              your Community, State, and Country
-            </Typography>
-          </Container>
-          {/* End hero unit */}
-          <Container maxWidth="md" component="main">
+    <Layout>
+      {/* Hero unit */}
+      <Container maxWidth="sm" component="main" className={classes.heroContent}>
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          color="textPrimary"
+          gutterBottom
+        >
+          An Easy Way to Reach Out
+        </Typography>
+        <Typography
+          variant="h5"
+          align="center"
+          color="textSecondary"
+          component="p"
+        >
+          Quickly reach out to your representatives and demand change within
+          your Community, State, and Country
+        </Typography>
+      </Container>
+      {/* End hero unit */}
+      <Container maxWidth="md" component="main">
+        <Consumer>
+          {(context) => (
             <Grid container spacing={5} alignItems="flex-end">
               <Card>
                 <CardHeader
@@ -112,26 +108,20 @@ const SearchPage = () => {
                   className={classes.cardHeader}
                 />
                 <CardContent>
-                  <Consumer>
-                    {(context) => (
-                      <FormControl textAlign="center">
-                        <InputLabel htmlFor="my-input">ZipCode</InputLabel>
-                        <Input
-                          id="my-input"
-                          aria-describedby="my-helper-text"
-                          onChange={handleChange}
-                        />
-                        <FormHelperText id="my-helper-text">
-                          We'll never share your address.
-                        </FormHelperText>
-                        <Button
-                          onClick={(e) => handleSubmit(e, context.setReps)}
-                        >
-                          Submit
-                        </Button>
-                      </FormControl>
-                    )}
-                  </Consumer>
+                  <FormControl textAlign="center">
+                    <InputLabel htmlFor="my-input">ZipCode</InputLabel>
+                    <Input
+                      id="my-input"
+                      aria-describedby="my-helper-text"
+                      onChange={handleChange}
+                    />
+                    <FormHelperText id="my-helper-text">
+                      We'll never share your address.
+                    </FormHelperText>
+                    <Button onClick={(e) => handleSubmit(e, context.setReps)}>
+                      Submit
+                    </Button>
+                  </FormControl>
                 </CardContent>
               </Card>
               <ArrowForwardIcon />
@@ -145,20 +135,18 @@ const SearchPage = () => {
                 />
                 <CardContent>
                   <ul>
-                    {context.reps &&
+                    {context.reps.officials &&
                       context.reps.officials.map((official) => (
                         <li>{official.name}</li>
                       ))}
                   </ul>
-
-                  {/* <>{JSON.stringify(context.reps.officials)}</> */}
                 </CardContent>
               </Card>
             </Grid>
-          </Container>
-        </Layout>
-      )}
-    </Consumer>
+          )}
+        </Consumer>
+      </Container>
+    </Layout>
   );
 };
 export default SearchPage;
