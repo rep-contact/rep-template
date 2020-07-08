@@ -60,10 +60,6 @@ const SearchPage = () => {
       });
   };
 
-  // const handleChange = (event) => {
-  //   formData.address = event.target.value;
-  // };
-
   return (
     <Layout>
       {/* Hero unit */}
@@ -114,18 +110,12 @@ const SearchPage = () => {
                               type="text"
                               label="Address"
                             ></Field>
-                            {/* <InputLabel htmlFor="my-input">Address</InputLabel> */}
                             <FormHelperText id="my-helper-text">
                               We won't store this information.
                             </FormHelperText>
                             <Button type="submit" disabled={isSubmitting}>
                               {!isSubmitting ? "Submit" : <CircularProgress />}
                             </Button>
-                            {/* <Button
-                        // onClick={(e) => handleSubmit(e, context.setReps)}
-                        >
-                          Submit
-                        </Button> */}
                           </FormControl>
                         </Form>
                       )}
