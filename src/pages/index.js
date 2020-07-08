@@ -10,6 +10,7 @@ import {
   InputLabel,
   FormHelperText,
   Input,
+  CircularProgress,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ContentCard from "../components/contentcard";
@@ -99,7 +100,7 @@ const SearchPage = () => {
               <Grid container spacing={5} alignItems="center" justify="center">
                 {!context.reps.officials ? (
                   <ContentCard
-                    title="Contact"
+                    title="Lookup"
                     subtitle="Enter your address to get your reps"
                   >
                     <Formik
@@ -122,7 +123,7 @@ const SearchPage = () => {
                               We won't store this information.
                             </FormHelperText>
                             <Button type="submit" disabled={isSubmitting}>
-                              Submit
+                              {!isSubmitting ? "Submit" : <CircularProgress />}
                             </Button>
                             {/* <Button
                         // onClick={(e) => handleSubmit(e, context.setReps)}

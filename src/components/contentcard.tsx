@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { FunctionComponent } from "react";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -23,7 +23,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContentCard = ({ children, title, subheader }) => {
+type CardProps = {
+  title: string
+  subheader?: string
+}
+
+const ContentCard: FunctionComponent<CardProps> = ({ children, title, subheader }) => {
   const classes = useStyles();
   return (
     <Card>
