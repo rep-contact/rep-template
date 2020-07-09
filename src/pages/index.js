@@ -1,4 +1,12 @@
-import { Button, CircularProgress, Container, FormControl, FormHelperText, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  FormControl,
+  FormHelperText,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
@@ -6,8 +14,7 @@ import React from "react";
 import ContentCard from "../components/contentcard";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
-import * as Yup from 'yup';
-
+import * as Yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -39,7 +46,7 @@ const SearchPage = () => {
 
   const formSchema = Yup.object().shape({
     address: Yup.string()
-      .min(2, "Please enter a longer address")
+      .min(5, "Please enter a longer address")
       .max(100, "Please enter a shorter address")
       .required("Please enter an address"),
   });
@@ -56,7 +63,11 @@ const SearchPage = () => {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
+        console.log(resultData);
         setReps(resultData.response);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -98,6 +109,7 @@ const SearchPage = () => {
                       initialValues={{ address: "" }}
                       onSubmit={(values, { setSubmitting }) => {
                         handleSubmit(context.setReps, values);
+                        setSubmitting(false);
                       }}
                       validationSchema={formSchema}
                     >
