@@ -42,16 +42,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchPage = () => {
+  const [validApi, setValidApi] = React.useState(true);
   const classes = useStyles();
 
   const formSchema = Yup.object().shape({
     address: Yup.string()
       .min(5, "Please enter a longer address")
       .max(100, "Please enter a shorter address")
+      .test("apiResponse", "We couldn't find that address.", function () {
+        console.log(validApi);
+        return validApi;
+      })
       .required("Please enter an address"),
   });
 
-  const handleSubmit = (setReps, values) => {
+  const handleSubmit = (setReps, values, validateForm) => {
     const address = values.address;
     fetch("/.netlify/functions/civicsCall", {
       method: "POST",
@@ -63,11 +68,17 @@ const SearchPage = () => {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        console.log(resultData);
-        setReps(resultData.response);
+        if (resultData.response.name === "Error") {
+          console.log("comes first");
+          setValidApi(false);
+          validateForm();
+          setValidApi(true);
+        } else {
+          setReps(resultData.response);
+        }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setValidApi(false);
       });
   };
 
@@ -107,8 +118,8 @@ const SearchPage = () => {
                   >
                     <Formik
                       initialValues={{ address: "" }}
-                      onSubmit={(values, { setSubmitting }) => {
-                        handleSubmit(context.setReps, values);
+                      onSubmit={(values, { setSubmitting, validateForm }) => {
+                        handleSubmit(context.setReps, values, validateForm);
                         setSubmitting(false);
                       }}
                       validationSchema={formSchema}
@@ -134,16 +145,12 @@ const SearchPage = () => {
                     </Formik>
                   </ContentCard>
                 ) : (
-                  <ContentCard
-                    title="Your Reps"
-                    subheader="Your reps will show up here"
-                  >
-                    <ul>
-                      {context.reps.officials.map((official, index) => (
-                        <li key={index}>{official.name}</li>
-                      ))}
-                    </ul>
-                  </ContentCard>
+                  context.reps.officials.map((official, index) => (
+                    <ContentCard
+                      title={official.name}
+                      subheader="Your reps will show up here"
+                    ></ContentCard>
+                  ))
                 )}
               </Grid>
             );
