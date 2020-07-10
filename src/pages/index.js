@@ -1,4 +1,12 @@
-import { Button, CircularProgress, Container, FormControl, FormHelperText, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  FormControl,
+  FormHelperText,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
@@ -6,8 +14,7 @@ import React from "react";
 import ContentCard from "../components/contentcard";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
-import * as Yup from 'yup';
-
+import * as Yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -35,16 +42,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchPage = () => {
+  const [validApi, setValidApi] = React.useState(true);
   const classes = useStyles();
 
   const formSchema = Yup.object().shape({
     address: Yup.string()
-      .min(2, "Please enter a longer address")
+      .min(5, "Please enter a longer address")
       .max(100, "Please enter a shorter address")
+      .test("apiResponse", "We couldn't find that address.", function () {
+        return validApi;
+      })
       .required("Please enter an address"),
   });
 
-  const handleSubmit = (setReps, values) => {
+  const handleSubmit = (setReps, values, validateForm) => {
     const address = values.address;
     fetch("/.netlify/functions/civicsCall", {
       method: "POST",
@@ -56,7 +67,17 @@ const SearchPage = () => {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setReps(resultData.response);
+        if (resultData.response.name === "Error") {
+          //todo we do this to hook the api response into the yup validation schema, im sure there is a less hacky way to accomplish the same thing
+          setValidApi(false);
+          validateForm();
+          setValidApi(true);
+        } else {
+          setReps(resultData.response);
+        }
+      })
+      .catch(() => {
+        setValidApi(false);
       });
   };
 
@@ -96,8 +117,9 @@ const SearchPage = () => {
                   >
                     <Formik
                       initialValues={{ address: "" }}
-                      onSubmit={(values, { setSubmitting }) => {
-                        handleSubmit(context.setReps, values);
+                      onSubmit={(values, { setSubmitting, validateForm }) => {
+                        handleSubmit(context.setReps, values, validateForm);
+                        setSubmitting(false);
                       }}
                       validationSchema={formSchema}
                     >
@@ -122,16 +144,12 @@ const SearchPage = () => {
                     </Formik>
                   </ContentCard>
                 ) : (
-                  <ContentCard
-                    title="Your Reps"
-                    subheader="Your reps will show up here"
-                  >
-                    <ul>
-                      {context.reps.officials.map((official, index) => (
-                        <li key={index}>{official.name}</li>
-                      ))}
-                    </ul>
-                  </ContentCard>
+                  context.reps.officials.map((official, index) => (
+                    <ContentCard
+                      title={official.name}
+                      subheader="Your reps will show up here"
+                    ></ContentCard>
+                  ))
                 )}
               </Grid>
             );

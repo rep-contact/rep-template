@@ -17,11 +17,15 @@ import { Container } from "@material-ui/core";
 const Layout = ({ children }) => {
   const [reps, setReps] = useState({});
 
+  const processReps = (reps) => {
+    setReps(reps);
+  };
+
   return (
     <Provider
       value={{
         reps: reps,
-        setReps: setReps,
+        setReps: processReps,
       }}
     >
       <Header></Header>
