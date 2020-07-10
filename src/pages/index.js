@@ -50,7 +50,6 @@ const SearchPage = () => {
       .min(5, "Please enter a longer address")
       .max(100, "Please enter a shorter address")
       .test("apiResponse", "We couldn't find that address.", function () {
-        console.log(validApi);
         return validApi;
       })
       .required("Please enter an address"),
@@ -69,7 +68,7 @@ const SearchPage = () => {
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
         if (resultData.response.name === "Error") {
-          console.log("comes first");
+          //todo we do this to hook the api response into the yup validation schema, im sure there is a less hacky way to accomplish the same thing
           setValidApi(false);
           validateForm();
           setValidApi(true);
