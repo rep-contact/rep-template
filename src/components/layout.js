@@ -17,8 +17,23 @@ import { Container } from "@material-ui/core";
 const Layout = ({ children }) => {
   const [reps, setReps] = useState({});
 
-  const processReps = (reps) => {
-    setReps(reps);
+  const processReps = (apiResponse) => {
+    //process regions -> offices
+    let officials = apiResponse.officials;
+    let offices = apiResponse.offices;
+    Object.values(apiResponse.divisions).forEach((division) => {
+      Object.values(division.officeIndices).forEach((officeIndex) => {
+        offices[officeIndex]["division"] = division.name;
+      });
+    });
+
+    offices.forEach((office) => {
+      office.officialIndices.forEach((officialIndex) => {
+        officials[officialIndex]["office"] = office;
+      });
+    });
+
+    setReps(officials);
   };
 
   return (
