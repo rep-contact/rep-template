@@ -144,7 +144,7 @@ const SearchPage = () => {
                     </Formik>
                   </ContentCard>
                 ) : (
-                  context.reps.officials.map((official, index) => (
+                  context.reps.map((official, index) => (
                     <ContentCard
                       title={official.name}
                       subheader="Your reps will show up here"
