@@ -15,6 +15,7 @@ import ContentCard from "../components/contentcard";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
 import * as Yup from "yup";
+import ContactList from "../components/repinfo";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -110,7 +111,7 @@ const SearchPage = () => {
           {(context) => {
             return (
               <Grid container spacing={5} alignItems="center" justify="center">
-                {!context.reps.officials ? (
+                {Object.keys(context.reps).length === 0 ? (
                   <ContentCard
                     title="Lookup"
                     subtitle="Enter your address to get your reps"
@@ -147,8 +148,18 @@ const SearchPage = () => {
                   context.reps.map((official, index) => (
                     <ContentCard
                       title={official.name}
-                      subheader="Your reps will show up here"
-                    ></ContentCard>
+                      subheader={official.office.name}
+                      key={index}
+                    >
+                      <ContactList
+                        phone={official.phones[0]}
+                        email={official.emails}
+                        address1={official.address[0].line1}
+                        address2={official.address[0].line2}
+                        state={official.address[0].state}
+                        zip={official.address[0].zip}
+                      ></ContactList>
+                    </ContentCard>
                   ))
                 )}
               </Grid>

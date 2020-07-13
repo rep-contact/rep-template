@@ -18,8 +18,6 @@ const Layout = ({ children }) => {
   const [reps, setReps] = useState({});
 
   const processReps = (apiResponse) => {
-    setReps(apiResponse.officials)
-    return
     //process regions -> offices
     let officials = apiResponse.officials;
     let offices = apiResponse.offices;
@@ -36,7 +34,6 @@ const Layout = ({ children }) => {
     });
 
     setReps(officials);
-    console.log(reps)
   };
 
   return (
