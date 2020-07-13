@@ -79,6 +79,8 @@ const SearchPage = () => {
       })
       .catch(() => {
         setValidApi(false);
+        validateForm();
+        setValidApi(true);
       });
   };
 
@@ -127,6 +129,7 @@ const SearchPage = () => {
                       onSubmit={(values, { setSubmitting, validateForm }) => {
                         setSubmitting(true);
                         handleSubmit(context.setReps, values, validateForm);
+                        validateForm();
                         setSubmitting(false);
                       }}
                       validationSchema={formSchema}
@@ -141,7 +144,8 @@ const SearchPage = () => {
                               label="Address"
                             ></Field>
                             <FormHelperText id="my-helper-text">
-                              The more specific your address, the more reps we can find.
+                              The more specific your address, the more reps we
+                              can find.
                             </FormHelperText>
                             <Button type="submit" disabled={isSubmitting}>
                               {!isSubmitting ? "Submit" : <CircularProgress />}
