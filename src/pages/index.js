@@ -141,7 +141,7 @@ const SearchPage = () => {
                               label="Address"
                             ></Field>
                             <FormHelperText id="my-helper-text">
-                              We won't store this information.
+                              The more specific your address, the more reps we can find.
                             </FormHelperText>
                             <Button type="submit" disabled={isSubmitting}>
                               {!isSubmitting ? "Submit" : <CircularProgress />}

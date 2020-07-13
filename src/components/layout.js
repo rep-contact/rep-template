@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
       }}
     >
       <Header></Header>
-      <Container>{children}</Container>
+      <Container >{children}</Container>
       <Footer></Footer>
     </Provider>
   );
