@@ -55,7 +55,7 @@ const Header = () => {
           >
             TellMyRep
           </Typography>
-          <nav>
+          {/* <nav>
             <Link
               variant="button"
               color="textPrimary"
@@ -80,7 +80,7 @@ const Header = () => {
             >
               U
             </Link>
-          </nav>
+          </nav> */}
         </Toolbar>
       </AppBar>
     </>

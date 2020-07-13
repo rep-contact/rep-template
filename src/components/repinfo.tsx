@@ -31,8 +31,7 @@ const ContactList: FunctionComponent<ContactProps> = ({
       )}
       {email && (
         <li>
-          <EmailIcon />
-          {email}
+          <EmailIcon /> <a href={"mailto:" + email}>{email}</a>
         </li>
       )}
       <li>
