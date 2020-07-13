@@ -32,17 +32,19 @@ const useStyles = makeStyles((theme) => ({
 type CardProps = {
   title: string;
   subheader?: string;
+  centerChildren?: boolean;
 };
 
 const ContentCard: FunctionComponent<CardProps> = ({
   children,
   title,
   subheader,
+  centerChildren = false,
 }) => {
   const classes = useStyles();
   return (
     //put key here
-    <Grid item xs={12} sm={6} md={6}>
+    <Grid item xs={12} md={6}>
       <Card>
         <CardHeader
           title={title}
@@ -51,7 +53,9 @@ const ContentCard: FunctionComponent<CardProps> = ({
           subheaderTypographyProps={{ align: "center" }}
           className={classes.cardHeader}
         />
-        <CardContent>{children}</CardContent>
+        <CardContent align={centerChildren ? "center" : "start"}>
+          {children}
+        </CardContent>
       </Card>
     </Grid>
   );

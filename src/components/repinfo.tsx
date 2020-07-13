@@ -26,7 +26,7 @@ const ContactList: FunctionComponent<ContactProps> = ({
       {phone && (
         <li>
           <PhoneIcon />
-          {phone}
+          <a href={"tel:" + phone}>{phone}</a>
         </li>
       )}
       {email && (

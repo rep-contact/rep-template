@@ -110,11 +110,17 @@ const SearchPage = () => {
         <Consumer>
           {(context) => {
             return (
-              <Grid container spacing={5} alignItems="flex-start" justify="center">
+              <Grid
+                container
+                spacing={5}
+                alignItems="flex-start"
+                justify="center"
+              >
                 {Object.keys(context.reps).length === 0 ? (
                   <ContentCard
                     title="Lookup"
                     subtitle="Enter your address to get your reps"
+                    centerChildren={true}
                   >
                     <Formik
                       initialValues={{ address: "" }}
@@ -159,6 +165,7 @@ const SearchPage = () => {
                         address2={official.address[0].line2}
                         state={official.address[0].state}
                         zip={official.address[0].zip}
+                        image={official.photoUrl}
                       ></ContactList>
                     </ContentCard>
                   ))
