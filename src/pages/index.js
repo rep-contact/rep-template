@@ -110,7 +110,7 @@ const SearchPage = () => {
         <Consumer>
           {(context) => {
             return (
-              <Grid container spacing={5} alignItems="center" justify="center">
+              <Grid container spacing={5} alignItems="flex-start" justify="center">
                 {Object.keys(context.reps).length === 0 ? (
                   <ContentCard
                     title="Lookup"
@@ -119,6 +119,7 @@ const SearchPage = () => {
                     <Formik
                       initialValues={{ address: "" }}
                       onSubmit={(values, { setSubmitting, validateForm }) => {
+                        setSubmitting(true);
                         handleSubmit(context.setReps, values, validateForm);
                         setSubmitting(false);
                       }}

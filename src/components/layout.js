@@ -36,11 +36,16 @@ const Layout = ({ children }) => {
     setReps(officials);
   };
 
+  const resetReps = () => {
+    setReps({});
+  };
+
   return (
     <Provider
       value={{
         reps: reps,
         setReps: processReps,
+        resetReps: resetReps,
       }}
     >
       <Header></Header>
