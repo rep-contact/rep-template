@@ -6,17 +6,16 @@ import {
   FormHelperText,
   Grid,
   Typography,
-  InputLabel,
-  Input,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Field, Form, Formik } from "formik";
+import { TextField } from "formik-material-ui";
 import React from "react";
 import ContentCard from "../components/contentcard";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
 import * as Yup from "yup";
 import ContactList from "../components/repinfo";
-import SearchLocationInput from "../components/SearchLocationInput";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -125,17 +124,7 @@ const SearchPage = () => {
                     subtitle="Enter your address to get your reps"
                     centerChildren={true}
                   >
-                    <FormControl>
-                      {/* <InputLabel htmlFor="my-input">Email address</InputLabel> */}
-                      <SearchLocationInput />
-                      <FormHelperText id="my-helper-text">
-                        We'll never share your email.
-                      </FormHelperText>
-
-                      <Button type="submit">Submit </Button>
-                    </FormControl>
-
-                    {/* <Formik
+                    <Formik
                       initialValues={{ address: "" }}
                       onSubmit={(values, { setSubmitting, validateForm }) => {
                         setSubmitting(true);
@@ -164,7 +153,7 @@ const SearchPage = () => {
                           </FormControl>
                         </Form>
                       )}
-                    </Formik> */}
+                    </Formik>
                   </ContentCard>
                 ) : (
                   context.reps.map((official, index) => (

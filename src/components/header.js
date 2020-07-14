@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const googleApiSrc = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API_KEY}&libraries=places`;
 
   return (
     <>
@@ -39,6 +40,8 @@ const Header = () => {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
+      <script type="text/javascript" src={googleApiSrc}></script>
+
       <CssBaseline />
       <AppBar
         position="static"
