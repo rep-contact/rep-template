@@ -6,17 +6,16 @@ import {
   FormHelperText,
   Grid,
   Typography,
-  InputLabel,
-  Input,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Field, Form, Formik } from "formik";
+import { TextField } from "formik-material-ui";
 import React from "react";
 import ContentCard from "../components/contentcard";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
 import * as Yup from "yup";
 import ContactList from "../components/repinfo";
-import SearchLocationInput from "../components/SearchLocationInput";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -78,10 +77,8 @@ const SearchPage = () => {
           setReps(resultData.response);
         }
       })
-      .catch(() => {
-        setValidApi(false);
-        validateForm();
-        setValidApi(true);
+      .catch((e) => {
+        console.log(e);
       });
   };
 
@@ -112,6 +109,7 @@ const SearchPage = () => {
       <Container maxWidth="md" component="main">
         <Consumer>
           {(context) => {
+            console.log(context);
             return (
               <Grid
                 container
@@ -125,22 +123,10 @@ const SearchPage = () => {
                     subtitle="Enter your address to get your reps"
                     centerChildren={true}
                   >
-                    <FormControl>
-                      {/* <InputLabel htmlFor="my-input">Email address</InputLabel> */}
-                      <SearchLocationInput />
-                      <FormHelperText id="my-helper-text">
-                        We'll never share your email.
-                      </FormHelperText>
-
-                      <Button type="submit">Submit </Button>
-                    </FormControl>
-
-                    {/* <Formik
+                    <Formik
                       initialValues={{ address: "" }}
-                      onSubmit={(values, { setSubmitting, validateForm }) => {
-                        setSubmitting(true);
+                      onSubmit={(values, { validateForm, setSubmitting }) => {
                         handleSubmit(context.setReps, values, validateForm);
-                        validateForm();
                         setSubmitting(false);
                       }}
                       validationSchema={formSchema}
@@ -164,7 +150,7 @@ const SearchPage = () => {
                           </FormControl>
                         </Form>
                       )}
-                    </Formik> */}
+                    </Formik>
                   </ContentCard>
                 ) : (
                   context.reps.map((official, index) => (
@@ -176,11 +162,15 @@ const SearchPage = () => {
                       <ContactList
                         phone={official.phones[0]}
                         email={official.emails}
-                        address1={official.address[0].line1}
-                        address2={official.address[0].line2}
-                        state={official.address[0].state}
-                        zip={official.address[0].zip}
-                        image={official.photoUrl}
+                        address={
+                          official.address && {
+                            address1: official.address[0].line1,
+                            address2: official.address[0].line2,
+                            state: official.address[0].state,
+                            zip: official.address[0].zip,
+                            image: official.photoUrl,
+                          }
+                        }
                       ></ContactList>
                     </ContentCard>
                   ))

@@ -21,11 +21,13 @@ const Layout = ({ children }) => {
     //process regions -> offices
     let officials = apiResponse.officials;
     let offices = apiResponse.offices;
-    Object.values(apiResponse.divisions).forEach((division) => {
-      Object.values(division.officeIndices).forEach((officeIndex) => {
-        offices[officeIndex]["division"] = division.name;
-      });
-    });
+    console.log(officials);
+    
+    // Object.values(apiResponse.divisions).forEach((division) => {
+    //   Object.values(division.officeIndices).forEach((officeIndex) => {
+    //     offices[officeIndex]["division"] = division.name;
+    //   });
+    // });
 
     offices.forEach((office) => {
       office.officialIndices.forEach((officialIndex) => {
@@ -49,7 +51,7 @@ const Layout = ({ children }) => {
       }}
     >
       <Header></Header>
-      <Container >{children}</Container>
+      <Container>{children}</Container>
       <Footer></Footer>
     </Provider>
   );
