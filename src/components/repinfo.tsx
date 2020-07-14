@@ -3,10 +3,17 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import BusinessIcon from "@material-ui/icons/Business";
 
+type Address = {
+  address1: string;
+  address2?: string;
+  city: string;
+  state: string;
+  zip: string;
+};
 type ContactProps = {
   phone?: string;
   email?: string;
-  address?: Object;
+  address?: Address;
 };
 
 const ContactList: FunctionComponent<ContactProps> = ({
