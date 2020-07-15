@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import BusinessIcon from "@material-ui/icons/Business";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 
 type Address = {
   address1: string;
@@ -22,27 +23,33 @@ const ContactList: FunctionComponent<ContactProps> = ({
   address,
 }) => {
   return (
-    <ul>
+    <List>
       {phone && (
-        <li>
-          <PhoneIcon />
-          <a href={"tel:" + phone}>{phone}</a>
-        </li>
+        <ListItem>
+          <ListItemText>
+            <PhoneIcon />
+            <a href={"tel:" + phone}>{phone}</a>
+          </ListItemText>
+        </ListItem>
       )}
       {email && (
-        <li>
-          <EmailIcon /> <a href={"mailto:" + email}>{email}</a>
-        </li>
+        <ListItem>
+          <ListItemText>
+            <EmailIcon /> <a href={"mailto:" + email}>{email}</a>
+          </ListItemText>
+        </ListItem>
       )}
       {address && (
-        <li>
-          <BusinessIcon />
-          {address.address1}
-          {address.address2}
-          {address.state} {address.zip}
-        </li>
+        <ListItem>
+          <ListItemText>
+            <BusinessIcon />
+            {address.address1}
+            {address.address2}
+            {address.state} {address.zip}
+          </ListItemText>
+        </ListItem>
       )}
-    </ul>
+    </List>
   );
 };
 
