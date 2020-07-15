@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  makeStyles,
+  Grid,
+} from "@material-ui/core";
 import React, { FunctionComponent } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,23 +30,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type CardProps = {
-  title: string
-  subheader?: string
-}
+  title: string;
+  subheader?: string;
+  centerChildren?: boolean;
+};
 
-const ContentCard: FunctionComponent<CardProps> = ({ children, title, subheader }) => {
+const ContentCard: FunctionComponent<CardProps> = ({
+  children,
+  title,
+  subheader,
+  centerChildren = false,
+}) => {
   const classes = useStyles();
   return (
-    <Card>
-      <CardHeader
-        title={title}
-        subheader={subheader}
-        titleTypographyProps={{ align: "center" }}
-        subheaderTypographyProps={{ align: "center" }}
-        className={classes.cardHeader}
-      />
-      <CardContent>{children}</CardContent>
-    </Card>
+    //put key here
+    <Grid item xs={12} md={6}>
+      <Card>
+        <CardHeader
+          title={title}
+          subheader={subheader}
+          titleTypographyProps={{ align: "center" }}
+          subheaderTypographyProps={{ align: "center" }}
+          className={classes.cardHeader}
+        />
+        <CardContent align={centerChildren ? "center" : "start"}>
+          {children}
+        </CardContent>
+      </Card>
+    </Grid>
   );
 };
 

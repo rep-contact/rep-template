@@ -1,0 +1,442 @@
+//This is what a response from Google Civics looks like. Im going to reformat so the office info is available under each rep
+
+{
+    "normalizedInput": {
+      "line1": "",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02134"
+    },
+    "kind": "civicinfo#representativeInfoResponse",
+    "divisions": {
+      "ocd-division/country:us": {
+        "name": "United States",
+        "officeIndices": [
+          0,
+          1
+        ]
+      },
+      "ocd-division/country:us/state:ma": {
+        "name": "Massachusetts",
+        "officeIndices": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    "offices": [
+      {
+        "name": "President of the United States",
+        "divisionId": "ocd-division/country:us",
+        "levels": [
+          "country"
+        ],
+        "roles": [
+          "headOfState",
+          "headOfGovernment"
+        ],
+        "officialIndices": [
+          0
+        ]
+      },
+      {
+        "name": "Vice President of the United States",
+        "divisionId": "ocd-division/country:us",
+        "levels": [
+          "country"
+        ],
+        "roles": [
+          "deputyHeadOfGovernment"
+        ],
+        "officialIndices": [
+          1
+        ]
+      },
+      {
+        "name": "U.S. Senator",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "country"
+        ],
+        "roles": [
+          "legislatorUpperBody"
+        ],
+        "officialIndices": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Governor of Massachusetts",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "administrativeArea1"
+        ],
+        "roles": [
+          "headOfGovernment"
+        ],
+        "officialIndices": [
+          4
+        ]
+      },
+      {
+        "name": "Lieutenant Governor of Massachusetts",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "administrativeArea1"
+        ],
+        "roles": [
+          "deputyHeadOfGovernment"
+        ],
+        "officialIndices": [
+          5
+        ]
+      },
+      {
+        "name": "MA State Auditor",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "administrativeArea1"
+        ],
+        "officialIndices": [
+          6
+        ]
+      },
+      {
+        "name": "MA Secretary of the Commonwealth",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "administrativeArea1"
+        ],
+        "officialIndices": [
+          7
+        ]
+      },
+      {
+        "name": "MA Attorney General",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "administrativeArea1"
+        ],
+        "officialIndices": [
+          8
+        ]
+      },
+      {
+        "name": "MA State Treasurer",
+        "divisionId": "ocd-division/country:us/state:ma",
+        "levels": [
+          "administrativeArea1"
+        ],
+        "officialIndices": [
+          9
+        ]
+      }
+    ],
+    "officials": [
+      {
+        "name": "Donald J. Trump",
+        "address": [
+          {
+            "line1": "1600 Pennsylvania Avenue Northwest",
+            "city": "Washington",
+            "state": "DC",
+            "zip": "20500"
+          }
+        ],
+        "party": "Republican Party",
+        "phones": [
+          "(202) 456-1111"
+        ],
+        "urls": [
+          "https://www.whitehouse.gov/"
+        ],
+        "photoUrl": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg",
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "DonaldTrump"
+          },
+          {
+            "type": "Twitter",
+            "id": "potus"
+          },
+          {
+            "type": "YouTube",
+            "id": "whitehouse"
+          }
+        ]
+      },
+      {
+        "name": "Mike Pence",
+        "address": [
+          {
+            "line1": "1600 Pennsylvania Avenue Northwest",
+            "city": "Washington",
+            "state": "DC",
+            "zip": "20500"
+          }
+        ],
+        "party": "Republican Party",
+        "phones": [
+          "(202) 456-1111"
+        ],
+        "urls": [
+          "https://www.whitehouse.gov/"
+        ],
+        "photoUrl": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/VPE%20Color.jpg",
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "mikepence"
+          },
+          {
+            "type": "Twitter",
+            "id": "VP"
+          }
+        ]
+      },
+      {
+        "name": "Elizabeth Warren",
+        "address": [
+          {
+            "line1": "309 Hart Senate Office Building",
+            "city": "Washington",
+            "state": "DC",
+            "zip": "20510"
+          }
+        ],
+        "party": "Democratic Party",
+        "phones": [
+          "(202) 224-4543"
+        ],
+        "urls": [
+          "https://www.warren.senate.gov/"
+        ],
+        "photoUrl": "http://bioguide.congress.gov/bioguide/photo/W/W000817.jpg",
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "senatorelizabethwarren"
+          },
+          {
+            "type": "Twitter",
+            "id": "SenWarren"
+          },
+          {
+            "type": "YouTube",
+            "id": "senelizabethwarren"
+          }
+        ]
+      },
+      {
+        "name": "Edward J. Markey",
+        "address": [
+          {
+            "line1": "255 Dirksen Senate Office Building",
+            "city": "Washington",
+            "state": "DC",
+            "zip": "20510"
+          }
+        ],
+        "party": "Democratic Party",
+        "phones": [
+          "(202) 224-2742"
+        ],
+        "urls": [
+          "https://www.markey.senate.gov/"
+        ],
+        "photoUrl": "http://bioguide.congress.gov/bioguide/photo/M/M000133.jpg",
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "EdJMarkey"
+          },
+          {
+            "type": "Twitter",
+            "id": "senmarkey"
+          },
+          {
+            "type": "YouTube",
+            "id": "repmarkey"
+          }
+        ]
+      },
+      {
+        "name": "Charles D. Baker",
+        "address": [
+          {
+            "line1": "24 Beacon Street",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02133"
+          }
+        ],
+        "party": "Republican Party",
+        "phones": [
+          "(617) 725-4005"
+        ],
+        "emails": [
+          "constituent.services@state.ma.us"
+        ],
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "CharlieBakerMA"
+          },
+          {
+            "type": "Twitter",
+            "id": "massgovernor"
+          },
+          {
+            "type": "YouTube",
+            "id": "massgovernor"
+          }
+        ]
+      },
+      {
+        "name": "Karyn Polito",
+        "address": [
+          {
+            "line1": "24 Beacon Street",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02133"
+          }
+        ],
+        "party": "Republican Party",
+        "phones": [
+          "(617) 725-4005"
+        ],
+        "emails": [
+          "constituent.services@state.ma.us"
+        ],
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "karynpolitoMA"
+          },
+          {
+            "type": "Twitter",
+            "id": "massltgov"
+          }
+        ]
+      },
+      {
+        "name": "Suzanne M. Bump",
+        "address": [
+          {
+            "line1": "24 Beacon Street",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02133"
+          }
+        ],
+        "party": "Democratic Party",
+        "phones": [
+          "(617) 727-2075"
+        ],
+        "emails": [
+          "Auditor@sao.state.ma.us"
+        ],
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "MassAuditor"
+          },
+          {
+            "type": "Twitter",
+            "id": "MassAuditor"
+          }
+        ]
+      },
+      {
+        "name": "William Francis Galvin",
+        "address": [
+          {
+            "line1": "1 Ashburton Place",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02108"
+          }
+        ],
+        "party": "Democratic Party",
+        "phones": [
+          "(617) 727-7030"
+        ],
+        "urls": [
+          "https://www.sec.state.ma.us/"
+        ],
+        "emails": [
+          "cis@sec.state.ma.us"
+        ],
+        "channels": [
+          {
+            "type": "Twitter",
+            "id": "SecretaryOfMass"
+          }
+        ]
+      },
+      {
+        "name": "Maura Healey",
+        "address": [
+          {
+            "line1": "1 Ashburton Place",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02108"
+          }
+        ],
+        "party": "Democratic Party",
+        "phones": [
+          "(617) 727-2200"
+        ],
+        "emails": [
+          "ago@state.ma.us"
+        ],
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "MassAttorneyGeneral"
+          },
+          {
+            "type": "Twitter",
+            "id": "MassAGO"
+          }
+        ]
+      },
+      {
+        "name": "Deborah B. Goldberg",
+        "address": [
+          {
+            "line1": "24 Beacon Street",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02133"
+          }
+        ],
+        "party": "Democratic Party",
+        "phones": [
+          "(617) 367-6900"
+        ],
+        "urls": [
+          "https://www.masstreasury.org/"
+        ],
+        "channels": [
+          {
+            "type": "Facebook",
+            "id": "masstreasury"
+          },
+          {
+            "type": "Twitter",
+            "id": "MASSTreasury"
+          }
+        ]
+      }
+    ]
+  }

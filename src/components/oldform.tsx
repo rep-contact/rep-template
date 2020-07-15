@@ -77,8 +77,10 @@ const SearchPage = () => {
           setReps(resultData.response);
         }
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
+        setValidApi(false);
+        validateForm();
+        setValidApi(true);
       });
   };
 
@@ -109,7 +111,6 @@ const SearchPage = () => {
       <Container maxWidth="md" component="main">
         <Consumer>
           {(context) => {
-            console.log(context);
             return (
               <Grid
                 container
@@ -125,8 +126,10 @@ const SearchPage = () => {
                   >
                     <Formik
                       initialValues={{ address: "" }}
-                      onSubmit={(values, { validateForm, setSubmitting }) => {
+                      onSubmit={(values, { setSubmitting, validateForm }) => {
+                        setSubmitting(true);
                         handleSubmit(context.setReps, values, validateForm);
+                        validateForm();
                         setSubmitting(false);
                       }}
                       validationSchema={formSchema}
@@ -162,15 +165,11 @@ const SearchPage = () => {
                       <ContactList
                         phone={official.phones[0]}
                         email={official.emails}
-                        address={
-                          official.address && {
-                            address1: official.address[0].line1,
-                            address2: official.address[0].line2,
-                            state: official.address[0].state,
-                            zip: official.address[0].zip,
-                            image: official.photoUrl,
-                          }
-                        }
+                        address1={official.address[0].line1}
+                        address2={official.address[0].line2}
+                        state={official.address[0].state}
+                        zip={official.address[0].zip}
+                        image={official.photoUrl}
                       ></ContactList>
                     </ContentCard>
                   ))
