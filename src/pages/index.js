@@ -6,6 +6,8 @@ import {
   FormHelperText,
   Grid,
   Typography,
+  Box,
+  Link,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Field, Form, Formik } from "formik";
@@ -109,73 +111,92 @@ const SearchPage = () => {
       <Container maxWidth="md" component="main">
         <Consumer>
           {(context) => {
-            console.log(context);
+            const repsSet = Object.keys(context.reps).length !== 0;
             return (
-              <Grid
-                container
-                spacing={5}
-                alignItems="flex-start"
-                justify="center"
-              >
-                {Object.keys(context.reps).length === 0 ? (
-                  <ContentCard
-                    title="Lookup"
-                    subtitle="Enter your address to get your reps"
-                    centerChildren={true}
-                  >
-                    <Formik
-                      initialValues={{ address: "" }}
-                      onSubmit={(values, { validateForm, setSubmitting }) => {
-                        handleSubmit(context.setReps, values, validateForm);
-                        setSubmitting(false);
-                      }}
-                      validationSchema={formSchema}
-                    >
-                      {({ isSubmitting }) => (
-                        <Form>
-                          <FormControl>
-                            <Field
-                              component={TextField}
-                              name="address"
-                              type="text"
-                              label="Address"
-                            ></Field>
-                            <FormHelperText id="my-helper-text">
-                              The more specific your address, the more reps we
-                              can find.
-                            </FormHelperText>
-                            <Button type="submit" disabled={isSubmitting}>
-                              {!isSubmitting ? "Submit" : <CircularProgress />}
-                            </Button>
-                          </FormControl>
-                        </Form>
-                      )}
-                    </Formik>
-                  </ContentCard>
-                ) : (
-                  context.reps.map((official, index) => (
+              <>
+                <Grid
+                  container
+                  spacing={5}
+                  alignItems="flex-start"
+                  justify="center"
+                >
+                  {!repsSet ? (
                     <ContentCard
-                      title={official.name}
-                      subheader={official.office.name}
-                      key={index}
+                      title="Lookup"
+                      subheader="Enter your address to get your reps"
+                      centerChildren={true}
                     >
-                      <ContactList
-                        phone={official.phones[0]}
-                        email={official.emails}
-                        address={
-                          official.address && {
-                            address1: official.address[0].line1,
-                            address2: official.address[0].line2,
-                            state: official.address[0].state,
-                            zip: official.address[0].zip,
-                            image: official.photoUrl,
-                          }
-                        }
-                      ></ContactList>
+                      <Formik
+                        initialValues={{ address: "" }}
+                        onSubmit={(values, { validateForm, setSubmitting }) => {
+                          handleSubmit(context.setReps, values, validateForm);
+                          setSubmitting(false);
+                        }}
+                        validationSchema={formSchema}
+                      >
+                        {({ isSubmitting }) => (
+                          <Form>
+                            <FormControl>
+                              <Field
+                                component={TextField}
+                                name="address"
+                                type="text"
+                                label="Address"
+                              ></Field>
+                              <FormHelperText id="my-helper-text">
+                                We do not save personal information
+                              </FormHelperText>
+                              <Button type="submit" disabled={isSubmitting}>
+                                {!isSubmitting ? (
+                                  "Submit"
+                                ) : (
+                                  <CircularProgress />
+                                )}
+                              </Button>
+                            </FormControl>
+                          </Form>
+                        )}
+                      </Formik>
                     </ContentCard>
-                  ))
+                  ) : (
+                    context.reps.map((official, index) => (
+                      <ContentCard
+                        title={official.name}
+                        subheader={official.office.name}
+                        key={index}
+                      >
+                        <ContactList
+                          phone={official.phones[0]}
+                          email={official.emails}
+                          address={
+                            official.address && {
+                              address1: official.address[0].line1,
+                              address2: official.address[0].line2,
+                              state: official.address[0].state,
+                              zip: official.address[0].zip,
+                              image: official.photoUrl,
+                            }
+                          }
+                        ></ContactList>
+                      </ContentCard>
+                    ))
+                  )}
+                </Grid>
+                {repsSet && (
+                  <Box alignItems="center">
+                    <Typography
+                      variant="h6"
+                      align="center"
+                      color="textPrimary"
+                      gutterBottom
+                    >
+                      Do these reps look wrong? Click{" "}
+                      <Link onClick={() => context.resetReps()}>here</Link> to
+                      search again!
+                    </Typography>
+                  </Box>
                 )}
-              </Grid>
+              </>
             );
           }}
         </Consumer>
