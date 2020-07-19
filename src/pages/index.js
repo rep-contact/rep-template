@@ -115,10 +115,7 @@ const SearchPage = () => {
             return (
               <>
                 {repsSet && (
-                  <Box
-                    alignItems="center"
-                    paddingBottom="25px"
-                  >
+                  <Box alignItems="center" paddingBottom="25px">
                     <Typography
                       variant="h6"
                       align="center"
@@ -178,7 +175,7 @@ const SearchPage = () => {
                         key={index}
                       >
                         <ContactList
-                          phone={official.phones[0]}
+                          phone={official.phones ? official.phones[0] : ""}
                           email={official.emails}
                           address={
                             official.address && {
