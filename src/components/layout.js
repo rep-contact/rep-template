@@ -21,19 +21,14 @@ const Layout = ({ children }) => {
     //process regions -> offices
     let officials = apiResponse.officials;
     let offices = apiResponse.offices;
-    console.log(officials);
-    
-    // Object.values(apiResponse.divisions).forEach((division) => {
-    //   Object.values(division.officeIndices).forEach((officeIndex) => {
-    //     offices[officeIndex]["division"] = division.name;
-    //   });
-    // });
 
     offices.forEach((office) => {
       office.officialIndices.forEach((officialIndex) => {
         officials[officialIndex]["office"] = office;
       });
     });
+    //delete POTUS and VP (as if they would listen anyway)
+    officials.splice(0, 2);
 
     setReps(officials);
   };
