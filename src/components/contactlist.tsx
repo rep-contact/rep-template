@@ -56,7 +56,7 @@ const ContactList: FunctionComponent<ContactProps> = ({
             <BusinessIcon />
           </ListItemIcon>
           <ListItemText>
-            {address.address1}
+            {address.address1}{' '}
             {address.address2}
             {address.state} {address.zip}
           </ListItemText>

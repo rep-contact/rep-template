@@ -17,7 +17,7 @@ import ContentCard from "../components/contentcard";
 import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
 import * as Yup from "yup";
-import ContactList from "../components/repinfo";
+import ContactList from "../components/contactlist";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -104,8 +104,8 @@ const SearchPage = () => {
           color="textSecondary"
           component="p"
         >
-          Quickly reach out to your representatives and demand change within
-          your Community, State, and Country
+          Quickly find your representatives and demand change at the federal,
+          state, and local level.
         </Typography>
       </Container>
       {/* End hero unit */}
@@ -115,7 +115,24 @@ const SearchPage = () => {
             const repsSet = Object.keys(context.reps).length !== 0;
             return (
               <>
-                <Grid container spacing={5} justify="center" >
+                {repsSet && (
+                  <Box
+                    alignItems="center"
+                    paddingBottom="25px"
+                  >
+                    <Typography
+                      variant="h6"
+                      align="center"
+                      color="textPrimary"
+                      gutterBottom
+                    >
+                      Do these reps look wrong? Click{" "}
+                      <Link onClick={() => context.resetReps()}>here</Link> to
+                      search again!
+                    </Typography>
+                  </Box>
+                )}
+                <Grid container spacing={5} justify="center">
                   {!repsSet ? (
                     <ContentCard
                       title="Lookup"
@@ -178,20 +195,6 @@ const SearchPage = () => {
                     ))
                   )}
                 </Grid>
-                {repsSet && (
-                  <Box alignItems="center" paddingTop="25px">
-                    <Typography
-                      variant="h6"
-                      align="center"
-                      color="textPrimary"
-                      gutterBottom
-                    >
-                      Do these reps look wrong? Click{" "}
-                      <Link onClick={() => context.resetReps()}>here</Link> to
-                      search again!
-                    </Typography>
-                  </Box>
-                )}
               </>
             );
           }}
