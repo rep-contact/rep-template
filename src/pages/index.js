@@ -70,6 +70,7 @@ const SearchPage = () => {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
+        console.log(resultData);
         if (resultData.response.name === "Error") {
           //todo we do this to hook the api response into the yup validation schema, im sure there is a less hacky way to accomplish the same thing
           setValidApi(false);
@@ -114,12 +115,7 @@ const SearchPage = () => {
             const repsSet = Object.keys(context.reps).length !== 0;
             return (
               <>
-                <Grid
-                  container
-                  spacing={5}
-                  alignItems="flex-start"
-                  justify="center"
-                >
+                <Grid container spacing={5} justify="center" >
                   {!repsSet ? (
                     <ContentCard
                       title="Lookup"
@@ -136,7 +132,7 @@ const SearchPage = () => {
                       >
                         {({ isSubmitting }) => (
                           <Form>
-                            <FormControl>
+                            <FormControl fullWidth={true}>
                               <Field
                                 component={TextField}
                                 name="address"
@@ -144,7 +140,7 @@ const SearchPage = () => {
                                 label="Address"
                               ></Field>
                               <FormHelperText id="my-helper-text">
-                                We do not save personal information
+                                We do not save any personal information
                               </FormHelperText>
                               <Button type="submit" disabled={isSubmitting}>
                                 {!isSubmitting ? (
@@ -183,7 +179,7 @@ const SearchPage = () => {
                   )}
                 </Grid>
                 {repsSet && (
-                  <Box alignItems="center">
+                  <Box alignItems="center" paddingTop="25px">
                     <Typography
                       variant="h6"
                       align="center"

@@ -1,12 +1,6 @@
-import React from "react";
-import {
-  CssBaseline,
-  Toolbar,
-  Typography,
-  AppBar,
-  Link,
-} from "@material-ui/core";
+import { AppBar, CssBaseline, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
