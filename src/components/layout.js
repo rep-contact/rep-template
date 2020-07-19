@@ -34,7 +34,6 @@ const Layout = ({ children }) => {
   };
 
   const resetReps = () => {
-    console.log('hi')
     setReps({});
   };
 

@@ -70,7 +70,6 @@ const SearchPage = () => {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        console.log(resultData);
         if (resultData.response.name === "Error") {
           //todo we do this to hook the api response into the yup validation schema, im sure there is a less hacky way to accomplish the same thing
           setValidApi(false);
