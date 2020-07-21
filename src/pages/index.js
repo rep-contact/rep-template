@@ -153,7 +153,7 @@ const SearchPage = () => {
                                 label="Address"
                               ></Field>
                               <FormHelperText id="my-helper-text">
-                                We do not save any personal information
+                                Zip Code is fine, but the more specific you are the better.
                               </FormHelperText>
                               <Button type="submit" disabled={isSubmitting}>
                                 {!isSubmitting ? (
