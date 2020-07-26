@@ -10,6 +10,36 @@ exports.createPages = async ({ graphql, actions }) => {
           uid
           data {
             title {
+              text
+            }
+            subissues {
+              subissue {
+                uid
+                raw
+                document {
+                  ... on PrismicSubissue {
+                    id
+                    data {
+                      description {
+                        text
+                      }
+                      title {
+                        text
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      allPrismicIssue {
+        nodes {
+          id
+          uid
+          data {
+            title {
               html
             }
             subissues {

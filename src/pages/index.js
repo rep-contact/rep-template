@@ -18,6 +18,7 @@ import Layout from "../components/layout";
 import { Consumer } from "../context/RepresentativeContext";
 import * as Yup from "yup";
 import ContactList from "../components/contactlist";
+import PageTitle from "../components/pagetitle";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -87,26 +88,11 @@ const SearchPage = () => {
   return (
     <Layout>
       {/* Hero unit */}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          An Easy Way to Reach Out
-        </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Quickly find your representatives and demand change at the federal,
-          state, and local level.
-        </Typography>
-      </Container>
+      <PageTitle
+        title="An Easy Way to Reach Out"
+        subtitle="Quickly find your representatives and demand change at the federal,
+      state, and local level."
+      />
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Consumer>
@@ -153,7 +139,8 @@ const SearchPage = () => {
                                 label="Address"
                               ></Field>
                               <FormHelperText id="my-helper-text">
-                                Zip Code is fine, but the more specific you are the better.
+                                Zip Code is fine, but the more specific you are
+                                the better.
                               </FormHelperText>
                               <Button type="submit" disabled={isSubmitting}>
                                 {!isSubmitting ? (
