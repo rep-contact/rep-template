@@ -33,6 +33,7 @@ type CardProps = {
   title: string;
   subheader?: string;
   centerChildren?: boolean;
+  size?: string;
 };
 
 const ContentCard: FunctionComponent<CardProps> = ({
@@ -40,11 +41,12 @@ const ContentCard: FunctionComponent<CardProps> = ({
   title,
   subheader,
   centerChildren = false,
+  size = "large",
 }) => {
   const classes = useStyles();
   return (
     //put key here
-    <Grid item xs={12} md={6}>
+    <Grid item xs={size === "large" ? 12 : 6} md={size === "large" ? 6 : 4}>
       <Card>
         <CardHeader
           title={title}

@@ -1,6 +1,7 @@
 import { AppBar, CssBaseline, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
+import SEO from "./seo";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -24,12 +25,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+type HeaderProps = {
+  pageTitle;
+};
+
+const Header: React.FunctionComponent<HeaderProps> = ({ pageTitle }) => {
   const classes = useStyles();
   const googleApiSrc = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API_KEY}&libraries=places`;
 
   return (
     <>
+      <SEO title={pageTitle} />
+
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

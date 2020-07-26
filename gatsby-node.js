@@ -34,23 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allPrismicIssue {
-        nodes {
-          id
-          uid
-          data {
-            title {
-              html
-            }
-            subissues {
-              subissue {
-                uid
-                raw
-              }
-            }
-          }
-        }
-      }
 
       allPrismicSubissue {
         nodes {
@@ -71,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/issue.js`),
       context: {
         id: node.id,
-        title: node.data.title.html,
+        title: node.data.title.text,
         subIssues: node.data.subissues,
       },
     });

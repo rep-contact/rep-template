@@ -14,7 +14,14 @@ import Header from "./header";
 import Footer from "./footer";
 import { Container } from "@material-ui/core";
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  pageTitle: string;
+};
+
+const Layout: React.FunctionComponent<LayoutProps> = ({
+  pageTitle,
+  children,
+}) => {
   const [reps, setReps] = useState({});
 
   const processReps = (apiResponse) => {
@@ -45,7 +52,7 @@ const Layout = ({ children }) => {
         resetReps: resetReps,
       }}
     >
-      <Header></Header>
+      <Header pageTitle={pageTitle}></Header>
       <Container>{children}</Container>
       <Footer></Footer>
     </Provider>
