@@ -7,9 +7,7 @@ import {
   Grid,
   Typography,
   Box,
-  Link,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import React from "react";
@@ -19,6 +17,7 @@ import { Consumer } from "../context/RepresentativeContext";
 import * as Yup from "yup";
 import ContactList from "../components/contactlist";
 import PageTitle from "../components/pagetitle";
+import { Link } from "gatsby";
 
 const SearchPage = () => {
   const [validApi, setValidApi] = React.useState(true);
@@ -92,8 +91,8 @@ const SearchPage = () => {
                       color="textPrimary"
                       gutterBottom
                     >
-                      If these reps look good, click{" "}
-                      <Link to="/404">here</Link> to choose issues!
+                      If these reps look good, click <Link to="/issuesindex">here</Link>{" "}
+                      to choose issues!
                     </Typography>
                   </Box>
                 )}

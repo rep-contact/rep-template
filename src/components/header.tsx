@@ -2,6 +2,7 @@ import { AppBar, CssBaseline, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import SEO from "./seo";
+import { Link } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -51,14 +52,16 @@ const Header: React.FunctionComponent<HeaderProps> = ({ pageTitle }) => {
         className={classes.appBar}
       >
         <Toolbar className={classes.toolbar}>
-          <Typography
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            TellMyRep
-          </Typography>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.toolbarTitle}
+            >
+              TellMyRep
+            </Typography>
+          </Link>
           {/* <nav>
             <Link
               variant="button"
